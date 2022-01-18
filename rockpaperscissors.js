@@ -1,11 +1,20 @@
 
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt('Choose Rock, Paper or Scissors.  First to 5 wins!');
-    playerSelection = playerSelection.toLowerCase();
-    function computerPlay() {
+const btns = document.querySelectorAll('button');
+btns.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        playerSelection = e.target.id;
+        playRound();
+    });
+
+});
+
+function playRound() {
+   console.log(playerSelection);
+   function computerPlay() {
         let i = Math.random();
         if (i < 0.33) {
             return "Rock";
@@ -59,13 +68,10 @@ function playRound(playerSelection, computerSelection) {
         default: 
             console.log('Please enter Rock, Paper, or Scissors.')
         }
-}
 
 
-function game() {
-    while (playerScore < 5 && computerScore < 5) {
-        playRound();
-    }
+
+
     if (playerScore == 5) {
         console.log('You win!  Final score is...');
         console.log('Computer: ${computerScore}');
@@ -81,3 +87,4 @@ function game() {
         computerScore = 0;
     }
 }
+
