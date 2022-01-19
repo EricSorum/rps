@@ -13,12 +13,11 @@ btns.forEach((button) => {
 });
 
 function playRound() {
-   console.log(playerSelection);
    function computerPlay() {
         let i = Math.random();
         if (i < 0.33) {
             return "Rock";
-        } else if (i >= 0.33 && i < 0.66) {
+        } else if (i > 0.66) {
             return "Paper";
         } else {
             return "Scissors";
@@ -28,63 +27,107 @@ function playRound() {
     switch (playerSelection) {
         case 'rock':
             if (computerSelection == 'Paper') {
-                console.log("Rock covered by Paper.  You lose this round...");
+                content.textContent = 'Rock covered by Paper.  You lose this round...';
                 computerScore++;
             }
             if (computerSelection == 'Scissors') {
-                console.log("Rock beats Scissors.  You win this round!");
+                content.textContent = 'Rock beats Scissors.  You win this round!';
                 playerScore++;
             }
             if (computerSelection == 'Rock') {
-                console.log("Tie!  Play again...");
+                content.textContent = 'Tie!  Play again...';
             }
         break;
         case 'paper':
             if (computerSelection == 'Rock') {
-                console.log('Paper covers Rock.  You win this round!');
+                content.textContent = 'Paper covers Rock.  You win this round!';
                 playerScore++;
             }
             if (computerSelection == 'Paper') {
-                console.log('Tie!  Play again...')
+                content.textContent = 'Tie!  Play again...';
             }
             if (computerSelection == 'Scissors') {
-               console.log('Paper sliced by Scissors.  You lose this round...');
+               content.textContent = 'Paper sliced by Scissors.  You lose this round...';
                computerScore++;
             }
         break;
         case 'scissors':
             if (computerSelection == 'Rock') {
-                console.log('Scissors stomped by Rock. You lose this round...');
+                content.textContent = 'Scissors stomped by Rock. You lose this round...';
                 computerScore++;
             }
             if (computerSelection == 'Paper') {
-                console.log('Scissors cuts Paper.  You win this round!');
+                content.textContent = 'Scissors cuts Paper.  You win this round!';
                 playerScore++;
             }
             if (computerSelection == 'Scissors') {
-                console.log('Tie!  Play again...')
+                content.textContent = 'Tie!  Play again...';
             }
-        break;
-        default: 
-            console.log('Please enter Rock, Paper, or Scissors.')
         }
-
-
-
-
     if (playerScore == 5) {
-        console.log('You win!  Final score is...');
-        console.log('Computer: ${computerScore}');
-        console.log('You: ${playerScore}');
+        content.textContent = `You win!  Final score is...  Player: ${playerScore}, Computer: ${computerScore}`;
+        // document.getElementById('finalPlayerScore').innerHTML = playerScore;
+        // document.getElementById('finalComputerScore').innerHTML = computerScore;
         playerScore = 0;
         computerScore = 0;
     }
     if (computerScore == 5) {
-        console.log('You lose!  Final score is...');
-        console.log(`Computer: ${computerScore}`);
-        console.log(`You: ${playerScore}`);
+        content.textContent = `You lose!  Final score is...  Player: ${playerScore}, Computer: ${computerScore}`;
+        // document.getElementById('finalPlayerScore').innerHTML = playerScore;
+        // document.getElementById('finalComputerScore').innerHTML = computerScore;
         playerScore = 0;
         computerScore = 0;
     }
+    scoreDiv1.textContent = playerScore;
+    scoreDiv2.textContent = computerScore;
 }
 
+const results = document.querySelector('#results');
+const content = document.createElement('div');
+content.classList.add('results');
+content.textContent = 'Make your selection to begin!';
+results.appendChild(content);
+
+const score1 = document.querySelector('#playerScore');
+const score2 = document.querySelector('#computerScore');
+const scoreDiv1 = document.createElement('div');
+const scoreDiv2 = document.createElement('div');
+scoreDiv1.classList.add('score');
+scoreDiv2.classList.add('score');
+scoreDiv1.textContent = playerScore;
+scoreDiv2.textContent = computerScore;
+score1.appendChild(scoreDiv1);
+score2.appendChild(scoreDiv2);
+
+
+
+
+
+
+
+
+
+
+/*
+this is unecessary code for creating separate fields for the final score
+const final1 = document.querySelector('#finalPlayerScore');
+const final2 = document.querySelector('#finalComputerScore');
+const finalDiv1 = document.createElement('div');
+const finalDiv2 = document.createElement('div');
+finalDiv1.classList.add('score');
+finalDiv2.classList.add('score');
+final1.appendChild(finalDiv1);
+final2.appendChild(finalDiv2);
+*/
+
+
+// Below is the generic code for creating new text content
+/*
+const container = document.querySelector('#container');
+
+const content = document.createElement('div');
+content.classList.add('content');
+content.textContent = 'This is the glorious text-content!';
+
+container.appendChild(content);
+*/
