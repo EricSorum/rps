@@ -1,7 +1,67 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .results {
     color: red;
+    padding: 20px;
 }
 
 .score {
     color: blue;
+}
+
+.score-box {
+    padding: 20px;
+    gap: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: blue;
+    width: 200px;
+    height: 200px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 10px;
+}
+
+.playerSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.computerSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.trackers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }

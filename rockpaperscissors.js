@@ -1,7 +1,12 @@
 
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection
+let playerSelection;
+
+const playerImage = document.createElement('img');
+document.querySelector('#playerPic').appendChild(playerImage);
+const computerImage = document.createElement('img');
+document.querySelector('#computerPic').appendChild(computerImage);
 
 const btns = document.querySelectorAll('button');
 btns.forEach((button) => {
@@ -16,16 +21,21 @@ function playRound() {
    function computerPlay() {
         let i = Math.random();
         if (i < 0.33) {
+            computerImage.src = 'rock.jpg';
             return "Rock";
         } else if (i > 0.66) {
+            computerImage.src = 'paper.jpg';
             return "Paper";
         } else {
+            computerImage.src = 'scissors.jpg';
             return "Scissors";
         }
     }
     computerSelection = computerPlay();
     switch (playerSelection) {
         case 'rock':
+
+            playerImage.src = 'rock.jpg';
             if (computerSelection == 'Paper') {
                 content.textContent = 'Rock covered by Paper.  You lose this round...';
                 computerScore++;
@@ -39,6 +49,7 @@ function playRound() {
             }
         break;
         case 'paper':
+            playerImage.src = 'paper.jpg';
             if (computerSelection == 'Rock') {
                 content.textContent = 'Paper covers Rock.  You win this round!';
                 playerScore++;
@@ -52,6 +63,7 @@ function playRound() {
             }
         break;
         case 'scissors':
+            playerImage.src = 'scissors.jpg';
             if (computerSelection == 'Rock') {
                 content.textContent = 'Scissors stomped by Rock. You lose this round...';
                 computerScore++;
@@ -66,15 +78,11 @@ function playRound() {
         }
     if (playerScore == 5) {
         content.textContent = `You win!  Final score is...  Player: ${playerScore}, Computer: ${computerScore}`;
-        // document.getElementById('finalPlayerScore').innerHTML = playerScore;
-        // document.getElementById('finalComputerScore').innerHTML = computerScore;
         playerScore = 0;
         computerScore = 0;
     }
     if (computerScore == 5) {
         content.textContent = `You lose!  Final score is...  Player: ${playerScore}, Computer: ${computerScore}`;
-        // document.getElementById('finalPlayerScore').innerHTML = playerScore;
-        // document.getElementById('finalComputerScore').innerHTML = computerScore;
         playerScore = 0;
         computerScore = 0;
     }
