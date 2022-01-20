@@ -34,7 +34,6 @@ function playRound() {
     computerSelection = computerPlay();
     switch (playerSelection) {
         case 'rock':
-
             playerImage.src = 'rock.jpg';
             if (computerSelection == 'Paper') {
                 content.textContent = 'Rock covered by Paper.  You lose this round...';
